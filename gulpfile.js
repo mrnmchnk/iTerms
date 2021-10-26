@@ -1,32 +1,23 @@
-'use strict';
+const { src, dest, parallel, series, watch } = require('gulp');
+const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify-es').default;
+const terser = require('gulp-terser');
 
-var gulp = require('gulp');
-var sass = require('gulp-sass')(require('sass'));
+function browsersync() {
+  browserSync.init({
+    server: { baseDir: "./"},
+    notify: false,
+    online: false
+  })
+}
 
-function build() {
-  return gulp.src('./sass/**/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
-};
+function scripts() {
+  return src("./sass/*.scss")
+  .pipe(concat("./css"))
+  .pipe(terser())
+  .pipe(dest("./css"))
+}
 
-exports.build = build;
-exports.watch = function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-};
-
-
-
-
-
-
-
-
-
-
-// var gulp = require("gulp");
-//   var sass = require("gulp-sass");
-//   gulp.task("sass", function() {
-//     gulp.src("style.scss")
-//       .pipe(sass())
-//       .pipe(gulp.dest("css"));
-//   });
+exports.browserSync = browsersync;
+exports.scripts = scripts;
