@@ -1,0 +1,24 @@
+{
+  "name": "iterms",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrnmchnk/iTerms.git"
+  },
+  "author": "M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrnmchnk/iTerms/issues"
+  },
+  "homepage": "https://github.com/mrnmchnk/iTerms#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.3"
+  }
+}
